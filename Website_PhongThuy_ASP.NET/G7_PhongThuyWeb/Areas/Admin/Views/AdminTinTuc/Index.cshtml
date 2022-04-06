@@ -1,0 +1,101 @@
+﻿@model IEnumerable<G7_PhongThuyWeb.Models.TinTuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{string contentck;}
+@*Thông báo xóa thành công*@
+@{ int num = 0;}
+@if (TempData["check"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+}
+
+
+<div id="page-wrapper" style="margin-left: 0px;">
+
+    <div class="row">
+        <div class="col-lg-12" style="height: 20px;">
+            <h1 class="page-header"></h1>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">DANH SÁCH TÀI KHOẢN <span id="award_un" class="badge badge-primary" style="font-size: 20px;background: #df6363;color: #fff;padding: 3px 8px;">PhongThuyDiepTam</span></div>
+
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <div class="col-lg-12">
+                            <button class="btn btn-success"><a href="/Admin/AdminTinTuc/Create"> <font color="white">Thêm Phản Hồi</font></a></button>
+                        </div>
+                        <form method="POST" action="./" name="frmForm" enctype="multipart/form-data">
+                            <input type="hidden" name="page" value="">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Tiêu Đề</th>
+                                        <th scope="col">Hình ảnh</th>
+                                        <th scope="col">Trạng Thái</th>
+                                        <th scope="col">Tác Giả</th>
+                                        <th scope="col">Ngày tạo</th>
+                                        <th scope="col">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        num++;
+                                        <tr>
+                                            <td>
+                                                @num
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.title)
+                                            </td>
+                                            <td>
+                                                <img src='~/Content/images/@Html.DisplayFor(modelItem => item.image_link)' width="150px" height="100px" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.description)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.author)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.created)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Duyệt Và Chỉnh Sửa", "Edit", new { id = item.id }) |
+                                                <!--    @Html.ActionLink("Details", "Details", new { id = item.id }) |-->
+                                                @Html.ActionLink("Xóa", "Delete", new { id = item.id }) 
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                            <!--create modal dialog for display detail info for edit on button cell click-->
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+                                    <div id="content-data"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</div>
+

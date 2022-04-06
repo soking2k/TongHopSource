@@ -1,0 +1,374 @@
+﻿@model G7_PhongThuyWeb.Models.DonHang
+@using PagedList.Mvc;
+@using G7_PhongThuyWeb.Models;
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{ int taikhoan = ViewBag.taikhoan;}
+@{ int tongtaikhoan = ViewBag.tongtaikhoan;}
+
+
+@{ decimal tongdoanhthu = 0;}
+
+@foreach (DonHang item in (List<DonHang>)ViewBag.doanhthunam)
+{
+
+        tongdoanhthu = tongdoanhthu + (decimal)item.amount;
+ 
+}
+@{ var tongdoanhthucs = String.Format("{0:0,0}", tongdoanhthu);}
+<!-- Doanh Thu Năm Nay
+@{ decimal doanhthunamnaycs = 0;}
+@{ int tongdonnamnay = 0;}
+@{ DateTime checknam;}
+@foreach (DonHang item in (List<DonHang>)ViewBag.doanhthunam)
+{
+    checknam = (DateTime)item.created;
+    if (checknam.Year == DateTime.Now.Year)
+    {
+        tongdonnamnay++;
+        doanhthunamnaycs = doanhthunamnaycs + (decimal)item.amount;
+    }
+}
+@{ var doanhthunamnay = String.Format("{0:0,0}", doanhthunamnaycs);}
+<!-- Doanh Thu Tháng Này -->
+
+@{ decimal doanhthuthangcs = 0;}
+@{ int tongdonthang = 0;}
+@{ DateTime checkthang;}
+@foreach (DonHang item in (List<DonHang>)ViewBag.doanhthuthang)
+{
+    checkthang = (DateTime)item.created;
+    if (checkthang.Month == DateTime.Now.Month)
+    {
+        tongdonthang++;
+        doanhthuthangcs = doanhthuthangcs + (decimal)item.amount;
+    }
+}
+@{ var doanhthuthangnay = String.Format("{0:0,0}", doanhthuthangcs);}
+<!-- Doanh Thu Hôm Nay -->
+@{ int tongdonhomnay = 0;}
+@{ decimal doanhthuhomnaycs = 0;}
+@{ DateTime checkhomnay;}
+
+
+@foreach (DonHang item in (List<DonHang>)ViewBag.doanhthuhomnay)
+{
+    checkhomnay = (DateTime)item.created;
+
+    if (checkhomnay.Month == DateTime.Now.Month && checkhomnay.Day == DateTime.Now.Day)
+    {
+        tongdonhomnay++;
+        doanhthuhomnaycs = doanhthuhomnaycs + (decimal)item.amount;
+    }
+
+}
+@{ var doanhthuhomnay = String.Format("{0:0,0}", doanhthuhomnaycs);}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+
+
+
+
+        <div class="clearfix"></div>
+
+
+
+        <div id="page-wrapper" style="margin-left: 0px;">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Administrator</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-2 col-md-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <span class="count_top"><i class="fa fa-user"></i> Tổng Users</span>
+                                <div class="col-xs-12 text-right">
+                                    <div class="huge" id="total_user1">@tongtaikhoan</div>
+                                    <div>Hôm nay đăng ký <i class="green" id="total_user_date1">@taikhoan</i> Users</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/Admin/AdminUser">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <span class="count_top">
+                                    <i class="fa fa-bitcoin"></i> Doanh Thu Cả Năm<!--</span-->
+                                    <div class="col-xs-12 text-right">
+                                        <div class="huge" id="total_card1">@doanhthunamnay</div>
+                                        <div>Năm nay <i class="green" id="total_card_count1">@tongdonnamnay</i> Bill</div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <a href="/Admin/AdminPay">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <span class="count_top">
+                                    <i class="fa fa-money"></i> Doanh Thu Tháng Này<!--</span-->
+                                    <div class="col-xs-12 text-right">
+                                        <div class="huge" id="total_momo1">@doanhthuthangnay</div>
+                                        <div>Hôm nay <i class="green" id="total_momo_count1">@tongdonthang</i> Bill</div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                        <a href="/Admin/AdminPay">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <span class="count_top"><i class="fa fa-user"></i> Doanh Thu Hôm Nay</span>
+                                <div class="col-xs-12 text-right">
+                                    @{ if (doanhthunamnaycs > 0)
+                                        {
+                                            <div class="huge" id="total_bank1">@doanhthuhomnay</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="huge" id="total_bank1">0</div>
+
+                                        }
+                                    }
+                                    <div>Hôm nay <i class="green" id="total_bank_count1">@tongdonhomnay</i> Bill</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/Admin/AdminPay">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header"></h1>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-heading">Doanh thu Theo Tháng: <font color="red"><b> @doanhthunamnay VND </b></font>(Tổng Doanh Thu Trong Năm Nay)</div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <script src="~/Scripts/c3.js"></script>
+                                    <script src="~/Scripts/c3.min.js"></script>
+                                    <script src="~/Scripts/d3.js"></script>
+                                    <script src="~/Scripts/d3.min.js"></script>
+                                    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                                    <script src="~/Scripts/jquery-1.10.2.js"></script>
+                                    <link href="~/Content/c3.css" rel="stylesheet" />
+
+
+
+                                    <div id="pieChart"></div>
+
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            var MSiteName = [];
+                                            var MasterJson;
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "/Admin/AdminHome/PieChart",
+                                                data: {},
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: "json",
+                                                success: function (response) {
+                                                    successFunc(response);
+                                                },
+                                            });
+
+
+                                            function successFunc(jsondata) {
+                                                var data = {};
+                                                var user_name = [];
+                                                jsondata.forEach(function (e) {
+                                                    user_name.push(e.user_name);
+                                                    data[e.user_name] = e.amount;
+                                                })
+
+                                                var chart = c3.generate({
+                                                    bindto: '#pieChart',
+                                                    data: {
+                                                        json: [data],
+                                                        keys: {
+                                                            value: user_name,
+                                                        },
+                                                        type: 'pie'
+                                                    },
+                                                    color: {
+                                                        pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+                                                    },
+                                                    pie: {
+                                                        label: {
+                                                            format: function (value, ratio, id) {
+                                                                return value;
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                    </script>
+
+
+
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Doanh thu Theo Năm: <font color="red"><b> @tongdoanhthucs VND </b></font>(Tổng Doanh Thu Từ Trước Đến Nay)</div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="flot-chart">
+                                    <div id="pieChart1"></div>
+
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            var MSiteName = [];
+                                            var MasterJson;
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "/Admin/AdminHome/PieChartYear",
+                                                data: {},
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: "json",
+                                                success: function (response1) {
+                                                    successFunc(response1);
+                                                },
+                                            });
+
+
+                                            function successFunc(jsondata1) {
+                                                var data = {};
+                                                var user_name = [];
+                                                jsondata1.forEach(function (e) {
+                                                    user_name.push(e.user_name);
+                                                    data[e.user_name] = e.amount;
+                                                })
+
+                                                var chart = c3.generate({
+                                                    bindto: '#pieChart1',
+                                                    data: {
+                                                        json: [data],
+                                                        keys: {
+                                                            value: user_name,
+                                                        },
+                                                        type: 'pie'
+                                                    },
+                                                    color: {
+                                                        pattern: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
+                                                    },
+                                                    pie: {
+                                                        label: {
+                                                            format: function (value, ratio, id) {
+                                                                return value;
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        });
+
+                                    </script>
+
+                                </div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--<div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"></h1>
+            </div>
+        </div>-->
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+</html>
+
+    </html>

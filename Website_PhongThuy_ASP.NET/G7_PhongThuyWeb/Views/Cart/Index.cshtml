@@ -1,0 +1,152 @@
+﻿@model IEnumerable<G7_PhongThuyWeb.Models.CartItem>
+
+<!-- Start header section -->
+
+@{double total = 0;}
+@{int dem=0;} 
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                dem = dem + 1;
+            }
+        }
+        else
+        {
+            dem = 0;
+        }
+    @if (Model == null)
+    {
+        <center>
+            <<div><h2>Giỏ hàng của bạn hiện đang trống </h2></div>
+        </center>
+    }
+    else
+    {
+        <section id="cart-view">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="cart-view-area">
+                            <div class="cart-view-table">
+                                <form action="/test/view/client/cart-update" method="post">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mô tả</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Giá</th>
+                                                    <th>Số lượng</th>
+                                                    <th>Giảm giá</th>
+                                                    <th>Thành Tiền</th>
+                                                    <th>Bỏ chọn</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+
+                                                        <td><a href="/test/view/client/product-detail?id=142"><img src="~/Content/images/@item.sanpham.image_link"></a></td>
+                                                        <td><a class="aa-cart-title" href="/test/view/client/product-detail?id=142">@item.sanpham.name</a></td>
+                                                        <td>
+                                                            @{ var price = String.Format("{0:0,0 VND}", @item.sanpham.price);
+                                                            }
+                                                            @price
+                                                        </td>
+                                                        <td>
+                                                            <b style="font-size:24px">
+                                                                @Html.ActionLink("-", "UpdateItem", "Cart", new { id = item.sanpham.id, qty = item.qty - 1 }, null)
+                                                            </b>
+                                                            <input type="text" name="qty" value="@item.qty" maxlength="2" size="2" />
+                                                            <b style="font-size:24px">
+                                                                @Html.ActionLink("+", "UpdateItem", "Cart", new { id = item.sanpham.id, qty = item.qty + 1 }, null)
+                                                            </b>
+                                                            @* @Html.DisplayFor(modelItem => item.qty)*@
+                                                        </td>
+                                                        <td>@item.sanpham.discount %</td>
+                                                        <td>
+                                                            @{double giachinh = (float)item.sanpham.price - ((float)(@item.sanpham.price * @item.sanpham.discount) / 100);
+                                                            
+ }
+                                                            @{double money = (double)giachinh * item.qty;}
+                                                            @{ var newmoney = String.Format("{0:0,0 VND}", money);}
+                                                            @{ total = total + (double)+money;}
+                                                            @newmoney
+                                                        </td>
+                                                        <td>
+                                                            <a class="remove" @Html.ActionLink("Gỡ Sản Phẩm", "DeleteItem", new { id = item.sanpham.id })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                <tr>
+                                                    @{ var totalmoney = String.Format("{0:0,0 VND}", total);}
+
+                                                    <td colspan="5" class=""><strong>TỔNG TIỀN</strong></td>
+                                                    <td><strong>@totalmoney</strong></td>
+
+
+                                                    <br />
+                                                </tr>
+                                                <tr>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                                
+                                <!-- Cart Total view -->
+                                <div class="cart-view-total">
+                                     <!--
+                                    <h4>Thông tin giỏ hàng</h4>
+                                    <table class="aa-totals-table">
+                                        <tbody>
+                                            <tr>
+                                                <th>Tạm tính</th>
+                                                <td>@totalmoney</td>
+                                            </tr>
+                                            <tr>
+                                                <th>VAT</th>
+                                                <td>0 VNĐ</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tổng cộng</th>
+                                                <td><strong>@totalmoney</strong></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                -->
+                                    <a href="/Cart/Order" class="aa-cart-view-btn">Thanh toán</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </section>
+
+    }
+
+</body>
+
+
+
+<!-- jQuery library -->
+
+
+
+</html>
+
+<!-- end footer-->

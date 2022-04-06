@@ -1,0 +1,210 @@
+﻿@model G7_PhongThuyWeb.Models.DonHang
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{double total = 0;}
+@{int dem = 0;}
+<!-- Start header section -->
+<!-- / header section -->
+<!--  content -->
+<!-- catg header banner section -->
+<!-- / catg header banner section -->
+<!-- Cart view section -->
+<section id="checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="checkout-area">
+                    @if (TempData["check"] != null)
+                    {
+                        <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+                    }
+                    @using (Html.BeginForm("Order", "Cart", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="checkout-left">
+                                    <div class="panel-group">
+
+                                        <!-- Shipping Address -->
+                                        <div class="panel panel-default aa-checkout-billaddress">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title" style="color:#754110">
+                                                    Địa chỉ giao hàng
+                                                </h4>
+                                            </div>
+
+
+
+                                            <div id="collapseFour">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="aa-checkout-single-bill">
+                                                                @Html.EditorFor(model => model.ho_ten, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "Người Nhận*" } })
+                                                                @Html.ValidationMessageFor(model => model.ho_ten, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="aa-checkout-single-bill">
+                                                                @Html.EditorFor(model => model.dia_chi, new { htmlAttributes = new { @class = "form-control", type = "text", placeholder = "Địa Chỉ Nhận*" } })
+                                                                @Html.ValidationMessageFor(model => model.dia_chi, "", new { @class = "text-danger" })
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="aa-checkout-single-bill">
+
+                                                                @Html.TextAreaFor(model => model.ghi_chu, new { cols = 35, @rows = 3, placeholder = "Ghi Chú*" })
+                                                                @Html.ValidationMessageFor(model => model.ghi_chu, "", new { @class = "text-danger" })
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="aa-checkout-single-bill">
+                                                                <input type="date" placeholder="Password" name="transaction_created" id="the-date" style="display: none">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="checkout-right">
+                                    <h4>Thông tin đơn hàng</h4>
+                                    <div class="aa-order-summary-area">
+                                        <table class="table table-responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Số tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+                                                @foreach (var item in ViewBag.ordersp)
+                                                {
+
+
+                                                    <tr>
+                                                        <td>@item.sanpham.name <strong> x @item.qty</strong></td>
+
+
+                                                        @{double money = ((double)item.sanpham.price - (double)(item.sanpham.price * item.sanpham.discount) / 100) * item.qty;}
+                                                        @{ total = total + (double)money;}
+                                                        @{ var newmoney = String.Format("{0:0,0 VND}", money);}
+
+                                                        <td>@newmoney</td>
+                                                    </tr>
+
+
+
+                                                }
+                                                @{ var totalmoney = String.Format("{0:0,0 VND}", total);}
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Tạm tính</th>
+                                                    <td>@totalmoney</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Thuế</th>
+                                                    <td>0 VNĐ</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Tổng cộng</th>
+                                                    <td><strong>@totalmoney</strong></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <h4>Hình thức thanh toán</h4>
+                                    <div class="" style="padding:20px;">
+                                        <div style="padding-top: 10px; padding-right:30px">
+                                            <input class="float-left" type="radio" id="2" name="option_payment" value="COD">
+                                            <label class="slide-trigger " for="2" data-target="#NL1">
+                                                <img class=" pl-3 " style="width:100px" src="~/Content/images/COD.png" />
+                                                <span class="pl-2 text-secondary" style="font-size:15px;"> Thanh Toán Khi Nhận Hàng</span>
+                                            </label>
+                                        </div>
+
+                                        <div style="padding-top: 10px; padding-right:40px">
+                                            <input type="radio" id="4" name="option_payment" value="MOMO">
+                                            <label for="4" class="slide-trigger">
+                                                <img style="width:100px" class=" pl-2 " src="~/Content/images/momo.png" />
+                                                <span class="pl-2 text-secondary" style="font-size:15px;"> Thanh Toán Qua Ví MoMo</span>
+                                            </label>
+                                        </div>
+                                        <div style="padding-top: 10px; padding-right:18px">
+                                            <input type="radio" id="5" name="option_payment" value="NL">
+                                            <label for="5" class="slide-trigger">
+                                                <img style="width:100px" class=" pl-2 " src="~/Content/images/NL.png" />
+                                                <span class="pl-2 text-secondary" style="font-size:15px;"> Thanh Toán Qua Ngân Lượng</span>
+                                            </label>
+                                        </div>
+
+
+
+                                    </div>
+                                    <center><input type="submit" value="Đặt hàng" class="aa-browse-btn"></center>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Cart view section -->
+<!--  end content-->
+<script>
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+
+
+    document.getElementById('the-date').value = today;</script>
+<!--  footer-->
+<jsp:include page="./footer/footer.jsp" flush="true" />
+<!-- end footer-->

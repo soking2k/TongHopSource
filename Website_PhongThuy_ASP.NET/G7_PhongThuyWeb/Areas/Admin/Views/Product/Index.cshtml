@@ -1,0 +1,112 @@
+﻿@model IEnumerable<G7_PhongThuyWeb.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@{string contentck;}
+@*Thông báo xóa thành công*@
+@{ int num = 0;}
+@if (TempData["check"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+}
+
+
+<div class="clearfix"></div>
+<div id="page-wrapper" style="margin-left: 0px;">
+
+    <div class="row">
+        <div class="col-lg-12" style="height: 20px;">
+            <h1 class="page-header"></h1>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">DANH SÁCH TÀI KHOẢN <span id="award_un" class="badge badge-primary" style="font-size: 20px;background: #df6363;color: #fff;padding: 3px 8px;">PhongThuyDiepTam</span></div>
+
+                <div class="content-wrapper">
+                    <div class="container-fluid">
+
+                        <div class="row mt-3">
+                            <div class="col-lg-12">
+
+                            </div>
+                            <br />
+                            <div class="col-lg-12">
+                                <button class="btn btn-success"><a href="/Admin/Product/Create"> <font color="white">Thêm sản phẩm</font></a></button>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Tên sản phẩm</th>
+                                                        <th scope="col">Hình ảnh</th>
+                                                        <th scope="col">ID danh mục</th>
+                                                        <th scope="col">Giá</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Giảm giá</th>
+                                                        <th scope="col">Ngày tạo</th>
+                                                        <th scope="col">Hành động</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        num++;
+                                                <tr>
+                                                    <td>
+                                                        @num
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.name)
+                                                    </td>
+                                                    <td>
+                                                        <img src='~/Content/images/@Html.DisplayFor(modelItem => item.image_link)' width="100px" height="100px" />
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.loaisp_id)
+                                                    </td>
+                                                    <td>
+                                                        @{ var total1 = String.Format("{0:0,0}", item.price);}
+                                                        @total1
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.status)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.discount)
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.created)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                                    </td>
+                                                </tr>
+                                                    }
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overlay toggle-menu"></div>
+                    </div>
+                </div>
+
+
+     

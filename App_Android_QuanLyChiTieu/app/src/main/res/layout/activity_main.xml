@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tbSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1C9F5B">
+
+        <TextView
+            android:id="@+id/txtTBTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </com.google.android.material.appbar.MaterialToolbar>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewr_pager"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/bottom_nav"
+        android:layout_height="match_parent"/>
+    <ImageButton
+        android:id="@+id/btn_them"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="35dp"
+        android:background="@android:color/transparent"
+        android:layout_marginEnd="15dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_add_expense"
+        android:textAllCaps="false" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_nav"
+        app:itemBackground="@color/teal_700"
+        app:itemIconTint="@color/custom_color_bottom_nav"
+        app:itemTextColor="@color/custom_color_bottom_nav"
+        />
+</RelativeLayout>

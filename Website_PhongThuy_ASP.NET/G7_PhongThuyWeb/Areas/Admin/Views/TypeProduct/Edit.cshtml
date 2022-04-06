@@ -1,0 +1,60 @@
+﻿@model G7_PhongThuyWeb.Models.LoaiSP
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <font color="green"><h3>Chỉnh Sửa Danh Mục</h3></font>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.id)
+
+                                <label for="input-1">Danh Mục Sản Phẩm</label>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <label for="input-1">Mã Danh Mục</label>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.id_loaisp, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.id_loaisp, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <button type="submit" value="Save" class="btn btn-success">Lưu Danh Mục</button>
+                                <a href="/Admin/AdminPay" target="_self">
+                                    <img class="pointer" style="cursor: pointer;" src="~/Content/admin/img/huy.png">
+
+                            </div>
+                        }
+
+
+                        <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />   <br />
+                        <br />   <br />   <br />   <br />   <br />   
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay toggle-menu"></div>
+    </div>
+</div>
+

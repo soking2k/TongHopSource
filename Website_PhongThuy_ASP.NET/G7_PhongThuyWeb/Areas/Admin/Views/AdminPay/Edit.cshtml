@@ -1,0 +1,142 @@
+﻿@model G7_PhongThuyWeb.Models.DonHang
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="content-wrapper">
+    <div class="container-fluid">
+
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        @using (Html.BeginForm("Edit", "AdminPay", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <font color="green"><h3>Chỉnh Sửa Đơn Hàng</h3></font>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+
+                            <label for="input-1">Mã Đơn Hàng</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user_id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Tài Khoản</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user_name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user_name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Email</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user_mail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user_mail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Số Điện Thoại</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.user_phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.user_phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Họ Tên</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ho_ten, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ho_ten, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Địa Chỉ</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.dia_chi, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.dia_chi, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Ghi Chú</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ghi_chu, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ghi_chu, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Tổng Hóa Đơn</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Thanh Toán</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.payment, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.payment, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Trạng Thái</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <label for="input-1">Code</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">DeliveryPay</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DeliveryPaymentMethod, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DeliveryPaymentMethod, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Trạng Thái</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <label for="input-1">Ngày Tạo</label>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.created, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @*@Html.EditorFor(model => model.created, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.created, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <button type="submit" value="Save" class="btn btn-success">Lưu Đơn Hàng</button>
+                            <a href="/Admin/AdminPay" target="_self">
+                                <img class="pointer" style="cursor: pointer;" src="~/Content/admin/img/huy.png">
+
+                        </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay toggle-menu"></div>
+    </div>
+</div>
+
+
+

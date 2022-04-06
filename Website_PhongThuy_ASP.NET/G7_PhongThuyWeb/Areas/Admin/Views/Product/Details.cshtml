@@ -1,0 +1,133 @@
+﻿@model G7_PhongThuyWeb.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@{string contentck;}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phong Thủy Tinh Sơn Tinh</title>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+          integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link href="~/Content/test/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="~/Content/test/css/bootstrap.css" rel="stylesheet">
+    <link rel="icon" href="~/Content/test/images/favicon.png" type="image/x-icon">
+    <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+    <link href="~/Content/test/css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
+    <!-- Product view slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/test/css/jquery.simpleLens.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/test/css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="~/Content/test/css/nouislider.css">
+    <!-- Theme color -->
+    <link id="switcher" href="~/Content/test/css/theme-color/default-theme.css" rel="stylesheet">
+
+    <!-- Top Slider CSS -->
+    <link href="~/Content/test/css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+    <!-- Main style sheet -->
+    <link href="~/Content/test/css/style.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<section id="aa-product-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-product-details-area">
+                    <div class="aa-product-details-content">
+                        <div class="row">
+                            <!-- Modal view slider -->
+                            <br /><br />
+
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <div class="aa-product-view-slider">
+                                    <div id="demo-1" class="simpleLens-gallery-container">
+                                        <div class="simpleLens-container">
+                                            <div class="simpleLens-big-image-container"><a data-lens-image="~/Content/images/@Html.DisplayFor(model => model.image_link)" class="simpleLens-lens-image"><img src="~/Content/images/@Html.DisplayFor(model => model.image_link)" class="simpleLens-big-image"></a></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal view content -->
+
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+                                <div class="aa-product-view-content">
+                                    <h3>
+                                        @Html.DisplayFor(model => model.name)
+                                    </h3>
+                                    <div class="aa-price-block">
+
+
+                                        <span class="aa-product-price">
+                                            @{ var total1 = String.Format("{0:0,0 VND}", Model.price);}
+                                            @total1
+                                        </span><span class="aa-product-price"></span>
+
+
+
+
+                                        <p class="aa-product-avilability">
+                                            Tình trạng: <span>
+
+
+                                                <b>   <font color="red">Còn Hàng</font></b>
+
+
+
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <p>@Html.DisplayFor(model => model.description)</p>
+
+                                    <div class="aa-prod-view-bottom">
+                                        <a class="aa-add-to-cart-btn" href="~/Cart/AddItem?id=@Html.DisplayFor(model => model.id)">Thêm vào giỏ hàng</a>
+                                    </div>
+                                    <div class="aa-prod-view-bottom">
+                                        <a class="aa-add-to-cart-btn" href="/Admin/Product">Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="aa-product-details-bottom">
+                        <ul class="nav nav-tabs aa-products-tab" id="myTab2">
+                            <li class="active"><a href="#description" data-toggle="tab" class="">Mô tả</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="description">
+                                @{ contentck = Model.content;}
+                                @Html.Raw(contentck)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+</section>
+
+</body>
+<!-- jQuery library -->

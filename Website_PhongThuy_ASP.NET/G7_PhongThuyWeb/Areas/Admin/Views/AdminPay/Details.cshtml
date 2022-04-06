@@ -1,0 +1,234 @@
+﻿@model IEnumerable<G7_PhongThuyWeb.Models.ChiTietDonHang>
+@using G7_PhongThuyWeb.Models'
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div id="page-wrapper" style="margin-left: 0px;">
+
+    <br /><br />
+    @{decimal total = 0;}
+    @{
+        var orderItem = (DonHang)ViewBag.od;
+    }
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-product-details-area">
+                        <div class="aa-product-details-content">
+                            <div class="row">
+                                <!-- Modal view slider -->
+                                <center><h2>Chi Tiết Hóa Đơn</h2></center>
+
+                                <td width="600" valign="top" align="center">
+                                    <br>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="padding:0px 20px 30px 20px;word-break:break-word">
+                                        <tbody>
+                                            <tr>
+                                                <td align="center">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0px 10px 20px 10px">
+                                                    <table id="m_3066711952147312168cartDetails" cellspacing="0" cellpadding="0" border="0" width="100%" dir="ltr" style="font-size:16px">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0px 20px 20px 20px">
+                                                    <p style="font-size:16px;line-height:24px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr"><span>Có thể mất vài phút để giao dịch xuất hiện trong tài khoản.</span></p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0px 10px 20px 10px">
+                                                    <table id="m_3066711952147312168cartDetails" cellspacing="0" cellpadding="0" border="0" width="100%" dir="ltr" style="font-size:16px">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="padding:0px 10px;text-align:left;border-top:0px;width:50%;vertical-align:top">
+                                                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0px 0px 20px 0px">
+                                                                                    <p style="font-size:16px;line-height:25px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr"><span><strong>ID Đơn Hàng:</strong></span><br><a href"#" target="_blank" data-saferedirecturl="#">@orderItem.id</a></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                                <td style="padding:0px 10px;text-align:left;border-top:0px;width:50%;vertical-align:top">
+                                                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0px 0px 20px 0px">
+                                                                                    <p style="font-size:16px;line-height:25px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr"><span><strong>Ngày giao dịch</strong></span><br><span>@orderItem.created</span></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr></tr>
+                                                            <tr>
+                                                                <td style="padding:0px 10px;text-align:left;border-top:0px;width:50%;vertical-align:top">
+                                                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0px 0px 20px 0px">
+                                                                                    <p style="font-size:16px;line-height:25px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr">
+                                                                                        <span><strong>Thông Tin Người Mua:</strong></span><br>
+                                                                                        <span><b>Họ Tên:</b> @orderItem.ho_ten<br></span>
+                                                                                        <span><b>Địa Chỉ:</b> @orderItem.dia_chi<br></span>
+                                                                                        <span><b>Email:</b> @orderItem.user_mail</a><br /></span>
+                                                                                        <span><b>Số Điện Thoại:</b> @orderItem.user_phone<br></span>
+                                                                                    </p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                                <td style="padding:0px 10px;text-align:left;border-top:0px;width:50%;vertical-align:top">
+                                                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0px 0px 20px 0px">
+                                                                                    <p style="font-size:16px;line-height:25px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr">
+                                                                                        <span><strong>Thành Tiền</strong></span><br><span>
+                                                                                            @{ var total2 = String.Format("{0:0,0 VND}", orderItem.amount);}
+                                                                                            @total2
+                                                                                        </span>
+                                                                                    </p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding:0px 10px;text-align:left;border-top:0px;width:50%;vertical-align:top">
+                                                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0px 0px 20px 0px">
+                                                                                    <p style="font-size:16px;line-height:25px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr">
+                                                                                        <span><b>Trạng Thái <span class="il"></span> -</b> <span style="color:#018065">@orderItem.status</span></span><br>
+                                                                                    </p><table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td style="padding:0px">
+                                                                                                    <p style="font-size:16px;line-height:24px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr"><span>(0:Processing / 1:Delivery / 2:Paid)</span></p>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                    <p></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                                <td style="padding:0px 10px;text-align:left;border-top:0px;width:50%;vertical-align:top">
+                                                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0px 0px 20px 0px">
+                                                                                    <p style="font-size:16px;line-height:25px;color:#2c2e2f;margin:0;word-break:break-word" dir="ltr"><span><strong>Ghi Chú Từ Khách Hàng</span></strong></span><br><span style="font-size:16px;color:#2c2e2f"><span>@orderItem.ghi_chu</span></span></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0px 10px 20px 10px">
+                                                    <table id="m_3066711952147312168cartDetails" cellspacing="0" cellpadding="0" border="0" width="100%" dir="ltr" style="font-size:16px">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:left;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Tên Sản Phẩm</span></th>
+                                                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:left;border-top:1px solid #b7bcbf;background-color:#f5f7fa;width:100px"><span><span class="il">Đơn</span> giá</span></th>
+                                                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:left;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Số lượng</span></th>
+                                                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:right;border-top:1px solid #b7bcbf;background-color:#f5f7fa;width:135px"><span>Số tiền</span></th>
+                                                            </tr>
+
+                                                            @foreach (var item in Model)
+                                                            {
+                                                                <tr>
+                                                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:left;border-top:0px;line-height:22px"><span style="font-size:16px;color:#2c2e2f"><span>@item.Name</span></span></td>
+                                                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:left;border-top:0px"><span>@{ var total3 = String.Format("{0:0,0 }", @item.Price);}@total3</span></td>
+                                                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:left;border-top:0px"><span>@item.qty</span></td>
+                                                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:right;border-top:0px">
+                                                                        <span>
+                                                                            @{double money = (double)item.Price * item.qty;}
+                                                                            @{ var newmoney = String.Format("{0:0,0 VND}", money);}
+                                                                            @newmoney
+                                                                        </span>
+                                                                    </td>
+
+                                                                </tr>
+
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding:0px 10px 20px 10px">
+                                                    <table id="m_3066711952147312168cartDetails" cellspacing="0" cellpadding="0" border="0" width="100%" dir="ltr" style="font-size:16px">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align:right;padding:5px 10px 0px 0px;vertical-align:top" colspan="1"><span><strong>Phí Ship</strong></span></td>
+                                                                <td style="text-align:right;padding:5px 10px 0px 0px;width:135px"><span>0 VNĐ</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="text-align:right;padding:5px 10px 0px 0px;vertical-align:top;padding-top:15px;padding-bottom:10px" colspan="1"><span><strong>Thanh toán</strong></span></td>
+                                                                <td style="text-align:right;padding:5px 10px 0px 0px;width:135px;padding-top:15px;padding-bottom:10px"><span>@total2</span></td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </td>
+
+                                <!-- Related product -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+     

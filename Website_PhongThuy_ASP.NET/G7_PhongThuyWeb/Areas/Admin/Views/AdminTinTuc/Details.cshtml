@@ -1,0 +1,46 @@
+﻿@model G7_PhongThuyWeb.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+
+
+<div id="page-wrapper" style="margin-left: 0px;">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-blog-archive-area">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <!-- Blog details -->
+                            <div class="aa-blog-content aa-blog-details">
+                                <article class="aa-blog-content-single">
+                                    <h2><a href="#">@Html.DisplayFor(model => model.title)</a></h2>
+                                    <div class="aa-article-bottom">
+                                        <div class="aa-post-author">
+                                            Đăng bởi <a href="#">@Html.DisplayFor(model => model.author)</a>
+                                        </div>
+                                        <div class="aa-post-date">@Html.DisplayFor(model => model.created)</div>
+                                    </div>
+                                    <figure class="aa-blog-img">
+                                        <a href="#"><img src="~/Content/images/@Html.DisplayFor(model => model.image_link)" alt="fashion img"></a>
+                                    </figure>
+                                    <p>
+                                        @{string contentck;}
+                                        @{ contentck = Model.content;}
+                                        @Html.Raw(contentck)
+                                    </p>
+
+                                </article>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

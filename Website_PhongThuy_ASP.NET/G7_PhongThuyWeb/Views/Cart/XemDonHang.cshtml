@@ -1,0 +1,75 @@
+﻿@model IEnumerable<G7_PhongThuyWeb.Models.DonHang>
+
+<html lang="en">
+
+<body>
+
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+        <tbody>
+          
+            <tr>
+               
+                <td style="padding:0px 10px 20px 10px">
+                    <table id="m_3066711952147312168cartDetails" cellspacing="0" cellpadding="0" border="0" width="100%" dir="ltr" style="font-size:16px">
+                        <tbody>
+                            @if (TempData["check"] != null)
+                            {
+                                <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+                            }
+                            <tr>
+                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:left;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Tài Khoản</span></th>
+                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 1px;text-align:left;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Phone</span></th>
+                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:left;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Tổng Tiền</span></th>
+                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:right;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Thanh Toán</span></th>
+                                <th style="border-bottom:1px solid #b7bcbf;padding:15px 10px;text-align:right;border-top:1px solid #b7bcbf;background-color:#f5f7fa"><span>Chi Tiết</span></th>
+
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:left;border-top:0px;line-height:22px"><span style="font-size:16px;color:#2c2e2f"><span>@item.user_name</span></span></td>
+                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:left;border-top:0px"><span>@item.user_phone</span></td>
+                                    @{ var total1 = String.Format("{0:0,0}", @item.amount);}
+                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:left;border-top:0px"><span>@total1</span></td>
+
+                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:right;border-top:0px"> <span>@item.payment</span>
+                                    <td style="border-bottom:1px solid #cbd2d6;padding:10px 10px;text-align:right;border-top:0px"><span> @Html.ActionLink("View", "ChiTietHang", new { id = item.id })</span></td>
+
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                <td style="padding:0px 10px 20px 10px">
+                    <table id="m_3066711952147312168cartDetails" cellspacing="0" cellpadding="0" border="0" width="100%" dir="ltr" style="font-size:16px">
+                        <tbody>
+
+                            <tr>
+                                <td style="text-align:right;padding:5px 10px 0px 0px;width:135px;padding-top:15px;padding-bottom:10px"><span></span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+<!-- jQuery library -->
+
+
+</html>
+
+<!-- end footer-->

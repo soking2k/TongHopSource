@@ -1,0 +1,113 @@
+﻿@model G7_PhongThuyWeb.Models.SanPham
+@using PagedList.Mvc;
+@using G7_PhongThuyWeb.Models;
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- product category -->
+<section id="aa-product-category">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
+                <div class="aa-product-catg-content">
+                    <div class="aa-product-catg-body">
+
+
+
+                        @{ string tukhoa = ViewBag.TuKhoa;}
+                        <p style="margin-bottom:30px;">Kết quả tìm kiếm cho từ khóa: <strong>@tukhoa</strong></p>
+
+
+
+                        <ul class="aa-product-catg">
+                            <!-- start single product item -->
+
+
+
+                            @{ string id = "";}
+
+                            @foreach (SanPham item in (List<SanPham>)ViewBag.timkiemsanpham)
+                            {
+                                id = ViewBag.id;
+                                <li>
+                                    <figure>
+                                        <a class="aa-product-img" href="~/Home/Details?id=@item.id"><img src="~/Content/images/@Html.DisplayFor(modelItem => item.image_link)" alt="polo shirt img"></a>
+                                        <a class="aa-add-card-btn" href="~/Home/Details?id=@item.id"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                                        <figcaption>
+                                            <h4 class="aa-product-title"><a href="~/Home/Details?id=@item.id">@Html.DisplayFor(modelItem => item.name)</a></h4>
+                                            <span class="aa-product-price">
+                                                @{ var price = String.Format("{0:0,0 VND}", @item.price);}
+                                                @price
+                                            </span><span class="aa-product-price"></span>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            }
+                        
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
+                <aside class="aa-sidebar">
+                    <!-- single sidebar -->
+                    <div class="aa-sidebar-widget">
+                        <h3>Danh mục</h3>
+                        <ul class="aa-catg-nav">
+
+                            <li><a href="/">Sản Phẩm Mới</a></li>
+
+                            <li><a href="/Home/Index/1">Vật Phẩm</a></li>
+
+                            <li><a href="/Home/Index/2">Linh Vật</a></li>
+
+                            <li><a href="/Home/Index/3">Tượng Đá</a></li>
+
+                        </ul>
+                    </div>
+
+
+                    <!-- single sidebar -->
+                    <div class="aa-sidebar-widget">
+                        <h3>Sản phẩm gần đây</h3>
+                        <div class="aa-recently-views">
+                            <ul>
+                                @foreach (SanPham item in (List<SanPham>)ViewBag.timkiemsanpham)
+                                {
+                                    id = ViewBag.id;
+                                    <li>
+                                        <a href="~/Home/Details?id=@item.id" class="aa-cartbox-img"><img alt="img" src="~/Content/images/@Html.DisplayFor(modelItem => item.image_link)"></a>
+                                        <div class="aa-cartbox-info">
+                                            <h4><a href="~/Home/Details?id=@item.id">@Html.DisplayFor(modelItem => item.name)</a></h4>
+
+
+                                            <p>
+                                                @{ var price = String.Format("{0:0,0 VND}", @item.price);}
+                                                @price
+                                            </p>
+
+
+
+
+                                        </div>
+                                    </li>
+
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- single sidebar -->
+
+                </aside>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- / product category -->

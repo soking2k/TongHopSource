@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "38480a38-3ef7-4a4c-99d3-7f8718a6ea56": {
+      "ProjectGuid": "38480a38-3ef7-4a4c-99d3-7f8718a6ea56",
+      "DisplayName": "Viewer",
+      "ColorIndex": 0
+    },
+    "fbc4b9f3-8193-4950-b67d-6bc20e69bc2a": {
+      "ProjectGuid": "fbc4b9f3-8193-4950-b67d-6bc20e69bc2a",
+      "DisplayName": "BTO",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Project_Nhom</string>
+    <string name="action_home">Home</string>
+    <string name="action_money">General</string>
+    <string name="action_setting">Statistic</string>
+</resources>

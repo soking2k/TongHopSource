@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns="http://Java.sun.com/xml/ns/javaee"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+   id="WebApp_ID" version="3.0">
+   <display-name>Website Phong Thủy</display-name>
+   
+	<welcome-file-list>   
+       <welcome-file>view/client/index.jsp</welcome-file> 
+	</welcome-file-list>
+	<servlet>
+       <servlet-name>404Handler</servlet-name>
+       <servlet-class>phongthuy.Controller.ErrorPageController</servlet-class>
+   </servlet>
+	<servlet-mapping>
+        <servlet-name>404Handler</servlet-name>
+        <url-pattern>/404</url-pattern>
+	</servlet-mapping>
+	
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/404</location>
+	</error-page>
+	<servlet>
+		<servlet-name>ClientLogin</servlet-name>
+		<servlet-class>phongthuy.Controller.LoginController</servlet-class>
+	</servlet>
+		<servlet-mapping>
+		<servlet-name>ClientLogin</servlet-name>
+		<url-pattern>/view/client/login</url-pattern>
+	</servlet-mapping>
+	   	<servlet>
+		<servlet-name>ClientRegister</servlet-name>
+		<servlet-class>phongthuy.Controller.RegistrationController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClientRegister</servlet-name>
+		<url-pattern>/view/client/register</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>LogoutClient</servlet-name>
+		<servlet-class>phongthuy.Controller.LogoutController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LogoutClient</servlet-name>
+		<url-pattern>/view/client/logout</url-pattern>
+	</servlet-mapping>
+	<servlet>
+       <servlet-name>homePage</servlet-name>
+       <servlet-class>phongthuy.Controller.HomeController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>homePage</servlet-name>
+       <url-pattern></url-pattern>
+   </servlet-mapping>
+	<servlet>
+       <servlet-name>productDetail</servlet-name>
+       <servlet-class>phongthuy.Controller.ProductDetailController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>productDetail</servlet-name>
+       <url-pattern>/view/client/product-detail</url-pattern>
+   </servlet-mapping>	
+
+
+   <servlet>
+       <servlet-name>ProductListClient</servlet-name>
+       <servlet-class>phongthuy.Controller.ProductListClientController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>ProductListClient</servlet-name>
+       <url-pattern>/view/client/product</url-pattern>
+   </servlet-mapping>
+   
+    <servlet>
+       <servlet-name>ProductListOfCategoryClient</servlet-name>
+       <servlet-class>phongthuy.Controller.ProductListOfCategoryClientController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>ProductListOfCategoryClient</servlet-name>
+       <url-pattern>/view/client/product-id</url-pattern>
+   </servlet-mapping>
+   
+    <servlet>
+		<servlet-name>CartController</servlet-name>
+		<servlet-class>phongthuy.Controller.CartController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CartController</servlet-name>
+		<url-pattern>/view/client/cart</url-pattern>
+	</servlet-mapping>
+    	<servlet>
+		<servlet-name>AddtoCartController</servlet-name>
+		<servlet-class>phongthuy.Controller.AddtoCartController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddtoCartController</servlet-name>
+		<url-pattern>/view/client/add-cart</url-pattern>
+	</servlet-mapping>
+   <servlet>
+		<servlet-name>UpdateCart</servlet-name>
+		<servlet-class>phongthuy.Controller.UpdateCartController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateCart</servlet-name>
+		<url-pattern>/view/client/cart-update</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CheckoutController</servlet-name>
+		<servlet-class>phongthuy.Controller.CheckoutController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckoutController</servlet-name>
+		<url-pattern>/view/client/checkout</url-pattern>
+	</servlet-mapping>
+	<servlet>
+    <servlet-name>deleteProductInCart</servlet-name>
+		<servlet-class>phongthuy.Controller.DeleteProductInCartController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deleteProductInCart</servlet-name>
+		<url-pattern>/view/client/cart-delete</url-pattern>
+	</servlet-mapping>
+	
+    <servlet>
+		<servlet-name>TransactionClient</servlet-name>
+		<servlet-class>phongthuy.Controller.TransactionController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>TransactionClient</servlet-name>
+		<url-pattern>/view/client/transaction</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>introduce</servlet-name>
+		<servlet-class>phongthuy.Controller.IntroduceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>introduce</servlet-name>
+		<url-pattern>/view/client/introduce</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>security</servlet-name>
+		<servlet-class>phongthuy.Controller.SecurityController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>security</servlet-name>
+		<url-pattern>/view/client/security</url-pattern>
+	</servlet-mapping> 
+	
+	<servlet>	
+       <servlet-name>ProductSearchByName</servlet-name>
+       <servlet-class>phongthuy.Controller.ProductSeachByNameController</servlet-class>
+   </servlet>
+ 	
+   <servlet-mapping>
+       <servlet-name>ProductSearchByName</servlet-name>
+       <url-pattern>/view/client/product/search</url-pattern>
+   </servlet-mapping>
+   <servlet>
+		<servlet-name>listTinTucClient</servlet-name>
+		<servlet-class>phongthuy.Controller.TinTucListClientController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listTinTucClient</servlet-name>
+		<url-pattern>/view/client/news-list</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>listTinTucClientDetail</servlet-name>
+		<servlet-class>phongthuy.Controller.TinTucListClientDetailController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>listTinTucClientDetail</servlet-name>
+		<url-pattern>/view/client/news-list-detail</url-pattern>
+	</servlet-mapping>
+   <servlet>
+       <servlet-name>AdminHomePage</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.AdminHomePage</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>AdminHomePage</servlet-name>
+       <url-pattern>/view/admin/homepage</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+       <servlet-name>AdminLogin</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.AdminLoginController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>AdminLogin</servlet-name>
+       <url-pattern>/view/admin/login</url-pattern>
+   </servlet-mapping>
+   <servlet>
+       <servlet-name>AdminLogout</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.AdminLogout</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>AdminLogout</servlet-name>
+       <url-pattern>/view/admin/logout</url-pattern>
+   </servlet-mapping>
+ 	<servlet>
+       <servlet-name>listUser</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.UserListController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>listUser</servlet-name>
+       <url-pattern>/view/admin/listuser</url-pattern>
+   </servlet-mapping>
+ 	    <servlet>
+       <servlet-name>editUser</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.UserEditController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>editUser</servlet-name>
+       <url-pattern>/view/admin/edituser</url-pattern>
+   </servlet-mapping>
+ 	   <servlet>
+       <servlet-name>listProduct</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.ProductListController</servlet-class>
+   </servlet>
+   
+    <servlet-mapping>
+       <servlet-name>listProduct</servlet-name>
+       <url-pattern>/view/admin/listsanpham</url-pattern>
+   </servlet-mapping>
+ 	   <servlet>
+       <servlet-name>addProduct</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.ProductAddController</servlet-class>
+   </servlet>
+   
+    <servlet-mapping>
+       <servlet-name>addProduct</servlet-name>
+       <url-pattern>/view/admin/addsanpham</url-pattern>
+   </servlet-mapping>
+ 
+ 	<servlet>
+       <servlet-name>deleteProduct</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.ProductDeleteController</servlet-class>
+   </servlet>   
+   <servlet-mapping>
+       <servlet-name>deleteProduct</servlet-name>
+       <url-pattern>/view/admin/deletesanpham</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+       <servlet-name>editProduct</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.ProductEditController</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+       <servlet-name>editProduct</servlet-name>
+       <url-pattern>/view/admin/editsanpham</url-pattern>
+   </servlet-mapping>
+      <servlet>
+       <servlet-name>addTinTuc</servlet-name>
+       	<servlet-class>phongthuy.Controller.admin.TinTucAddController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>addTinTuc</servlet-name>
+       <url-pattern>/view/admin/addtintuc</url-pattern>
+   </servlet-mapping>
+   
+    <servlet>
+       <servlet-name>listTinTuc</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.TinTucListController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>listTinTuc</servlet-name>
+       <url-pattern>/view/admin/listtintuc</url-pattern>
+   </servlet-mapping>
+   <servlet>
+   
+   <servlet-name>deleteTinTuc</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.TinTucDeleteController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>deleteTinTuc</servlet-name>
+       <url-pattern>/view/admin/deletetintuc</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>editTinTuc</servlet-name>
+       	<servlet-class>phongthuy.Controller.admin.TinTucEditController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>editTinTuc</servlet-name>
+       <url-pattern>/view/admin/edittintuc</url-pattern>
+   </servlet-mapping>
+	<servlet>
+       <servlet-name>listOrder</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.OrderListController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>listOrder</servlet-name>
+       <url-pattern>/view/admin/listorder</url-pattern>
+   </servlet-mapping>
+   
+	<servlet>
+       <servlet-name>listProductOrder</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.OrderListProduct</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>listProductOrder</servlet-name>
+       <url-pattern>/view/admin/listProductOrder</url-pattern>
+   </servlet-mapping>
+      
+   <servlet>
+       <servlet-name>listOrderdetail</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.OrderdetailListController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>listOrderdetail</servlet-name>
+       <url-pattern>/view/admin/list-detail</url-pattern>
+   </servlet-mapping>
+   
+   	<servlet>
+       <servlet-name>deleteOrder</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.OrderDeleteController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>deleteOrder</servlet-name>
+       <url-pattern>/view/admin/deleteorder</url-pattern>
+   </servlet-mapping>
+   
+      <servlet>
+       <servlet-name>editOrder</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.OrderEditController</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+       <servlet-name>editOrder</servlet-name>
+       <url-pattern>/view/admin/editorder</url-pattern>
+   </servlet-mapping>
+	<servlet>
+       <servlet-name>addCategory</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.CategoryAddController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>addCategory</servlet-name>
+       <url-pattern>/view/admin/addcate</url-pattern>
+   </servlet-mapping>
+        
+   <servlet>
+       <servlet-name>listCategory</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.CategoryListController</servlet-class>
+   </servlet>
+ 
+   <servlet-mapping>
+       <servlet-name>listCategory</servlet-name>
+       <url-pattern>/view/admin/listcate</url-pattern>
+   </servlet-mapping>
+   
+   
+   <servlet>
+       <servlet-name>deleteCategory</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.CategoryeDeleteController</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+       <servlet-name>deleteCategory</servlet-name>
+       <url-pattern>/view/admin/deletecate</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+       <servlet-name>editCategory</servlet-name>
+       <servlet-class>phongthuy.Controller.admin.CategoryEditController</servlet-class>
+   </servlet>
+   
+   <servlet-mapping>
+       <servlet-name>editCategory</servlet-name>
+       <url-pattern>/view/admin/editcate</url-pattern>
+   </servlet-mapping>
+	
+</web-app>

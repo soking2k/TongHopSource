@@ -1,0 +1,157 @@
+﻿@model G7_PhongThuyWeb.Models.SanPham
+@using PagedList.Mvc;
+@using G7_PhongThuyWeb.Models;
+@{ double total = 0;}
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+    <!-- / catg header banner section -->
+    <!-- product category -->
+    <section id="aa-product-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-product-details-area">
+                        <div class="aa-product-details-content">
+                            <div class="row">
+                                <!-- Modal view slider -->
+
+                                <div class="col-md-5 col-sm-5 col-xs-12">
+                                    <div class="aa-product-view-slider">
+                                        <div id="demo-1" class="simpleLens-gallery-container">
+                                            <div class="simpleLens-container">
+                                                <div class="simpleLens-big-image-container"><a data-lens-image="~/Content/images/@Html.DisplayFor(model => model.image_link)" class="simpleLens-lens-image"><img src="~/Content/images/@Html.DisplayFor(model => model.image_link)" class="simpleLens-big-image"></a></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal view content -->
+
+                                <div class="col-md-7 col-sm-7 col-xs-12">
+                                    <div class="aa-product-view-content">
+                                        <h3>
+                                            @Html.DisplayFor(model => model.name)
+                                        </h3>
+                                        <div class="aa-price-block">
+
+
+                                            <span class="aa-product-price">
+                                                @{ var price = String.Format("{0:0,0 VND}", Model.price);}
+                                                @if (Model.discount != 0)
+                                                {
+                                                    double total1 = 0;
+                                                    total1 = total1 + ((double)Model.price - (((double)Model.price * (double)Model.discount) / 100));
+                                                    var khuyenmai = String.Format("{0:0,0 VND}", total1);
+
+                                                    <strike>@price</strike>
+
+                                                    <br />
+                                                    @khuyenmai
+
+                                                }
+                                                else
+                                                {
+                                                    @price
+                                                }
+
+
+
+
+                                            </span><span class="aa-product-price"></span>
+
+
+
+
+                                            <p class="aa-product-avilability">
+                                                Tình trạng: <span>
+
+
+                                                    <b>   <font color="red">Còn Hàng</font></b>
+
+
+
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <p>@Html.DisplayFor(model => model.description)</p>
+
+                                        <div class="aa-prod-view-bottom">
+                                            <a class="aa-add-to-cart-btn" href="~/Cart/AddItem?id=@Html.DisplayFor(model => model.id)">Thêm vào giỏ hàng</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="aa-product-details-bottom">
+                            <ul class="nav nav-tabs aa-products-tab" id="myTab2">
+                                <li class="active"><a href="#description" data-toggle="tab" class="">Mô tả</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="description">
+                                    @{string contentck;}
+                                    @{ contentck = Model.content;}
+                                    @Html.Raw(contentck)
+                                </div>
+                            </div>
+                            <!-- Related product -->
+                            <div class="aa-product-related-item">
+                                <h3>SẢN PHẨM GỢI Ý</h3>
+                                <section id="aa-product">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="aa-product-area">
+                                                        <div class="aa-product-inner">
+                                                            <ul class="nav nav-tabs aa-products-tab"></ul>
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade in active" id="sanphammoi">
+                                                                    <ul class="aa-product-catg">
+                                                                        @{ string id = "";}
+
+                                                                        @foreach (SanPham item in (List<SanPham>)ViewBag.sanphamz)
+                                                                        {
+                                                                            id = ViewBag.id;
+                                                                            <li>
+                                                                                <figure>
+                                                                                    <a class="aa-product-img" href="~/Home/Details?id=@item.id"><img src="~/Content/images/@Html.DisplayFor(modelItem => item.image_link)" alt="polo shirt img"></a>
+                                                                                    <a class="aa-add-card-btn" href="~/Home/Details?id=@item.id"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                                                                                    <figcaption>
+                                                                                        <h4 class="aa-product-title"><a href="~/Home/Details?id=@item.id">@Html.DisplayFor(modelItem => item.name)</a></h4>
+                                                                                        <span class="aa-product-price">
+                                                                                            @{ var price1 = String.Format("{0:0,0 VND}", @item.price);}
+                                                                                            @price1
+                                                                                        </span><span class="aa-product-price"></span>
+                                                                                    </figcaption>
+                                                                                </figure>
+                                                                            </li>
+                                                                        }
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+</body>
+<!-- jQuery library -->
+
+
+</html>
+
+<!-- end footer-->

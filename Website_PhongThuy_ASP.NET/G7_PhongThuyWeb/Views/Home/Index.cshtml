@@ -1,0 +1,88 @@
+﻿<!-- Start header section -->
+@model PagedList.IPagedList<G7_PhongThuyWeb.Models.SanPham>
+@using PagedList.Mvc;
+@using G7_PhongThuyWeb.Models;
+@{ double total = 0;}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Messenger Plugin chat Code -->
+
+
+<body>
+    <section id="aa-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="aa-product-area">
+                            <div class="aa-product-inner">
+                                <!-- start prduct navigation -->
+                                <ul class="nav nav-tabs aa-products-tab">
+                                    <li><a href="/">Mới Nhất</a></li>
+                                    @foreach (LoaiSP item in (List<LoaiSP>)ViewBag.menu)
+                                    {
+                                        <li>@Html.ActionLink(item.name, "Index", "Home", new { id = item.id_loaisp }, null)</li>
+                                    }
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <!-- Start men product category -->
+                                    <div class="tab-pane fade in active" id="sanphammoi">
+                                        <ul class="aa-product-catg">
+                                            <!-- start single product item -->
+                                            @{ string id = "";}
+                                            @foreach (var item in Model)
+                                            {
+                                                id = ViewBag.id;
+                                                <li>
+                                                    <figure>
+                                                        <a class="aa-product-img" href="~/Home/Details?id=@item.id"><img src="~/Content/images/@Html.DisplayFor(modelItem => item.image_link)" alt="polo shirt img"></a>
+                                                        <a class="aa-add-card-btn" href="~/Home/Details?id=@item.id"><span class="fa fa-shopping-cart"></span>Thêm vào giỏ hàng</a>
+                                                        <figcaption>
+                                                            <h4 class="aa-product-title"><a href="~/Home/Details?id=@item.id">@Html.DisplayFor(modelItem => item.name)</a></h4>
+                                                            @{ var price = String.Format("{0:0,0 VND}", @item.price);}
+                                                            @if (item.discount != 0)
+                                                            {
+                                                                double total1 = 0;
+                                                                total1 = total1 + ((double)item.price - (((double)item.price * (double)item.discount) / 100));
+                                                                var khuyenmai = String.Format("{0:0,0 VND}", total1);
+
+                                                                <span class="aa-product-price">@khuyenmai</span><br />
+                                                                <span class="aa-product-price"><strike>@price</strike> </span>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="aa-product-price">@price</span><br />
+
+                                                            }
+
+                                                        </figcaption>
+                                                    </figure>
+
+                                                </li>
+
+
+
+                                            }
+                                        </ul>
+
+                                        <center> @Html.PagedListPager(Model, page => Url.Action("Index", new { page, id = id }))</center>
+
+                                    </div>
+                                    <!-- / electronic product category -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!-- end footer-->

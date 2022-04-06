@@ -1,0 +1,67 @@
+﻿@model G7_PhongThuyWeb.Models.TinTuc
+@using PagedList.Mvc;
+@using G7_PhongThuyWeb.Models;
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="aa-blog-archive">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-blog-archive-area">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="aa-blog-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <!-- <button class="btn btn-success"><a href="/Admin/AdminTinTuc/Create"> <font color="white">Tạo Bài Viết</font></a></button>-->
+                                    </div>
+                                    @if (TempData["check"] != null)
+                                    {
+                                        <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+                                    }
+                                    <br /><br /><br>
+                                    @{ string id = "";}
+
+                                    @foreach (TinTuc item in (List<TinTuc>)ViewBag.TinTuc)
+                                    {
+                                        id = ViewBag.id;
+                                        <div class="col-md-6 col-sm-6">
+                                            <article class="aa-blog-content-single">
+                                                <h4><a href="~/Home/ChiTietTinTuc?id=@item.id"> <b>@item.title</b></a></h4>
+                                                <figure class="aa-blog-img">
+                                                    <a href="~/Home/ChiTietTinTuc?id=@item.id"><img src="~/Content/images/@Html.DisplayFor(modelItem => item.image_link)" alt="farm products" height="180px" width="300px"></a>
+                                                </figure>
+                                                <p class="desc-tintucs">
+                                                    BẤM VÀO ĐỂ XEM CHI TIẾT<br />
+                                                    <i> @item.description</i>
+                                                </p>
+                                                <div class="aa-article-bottom">
+                                                    <div class="aa-post-author">
+                                                        <b> Đăng bởi</b> <a href="#"><b><font color="red"> @item.author</font></b> </a>
+
+                                                    </div>
+
+                                                    <div class="aa-post-date"><b><font color="blue">@item.created.ToString("dd/MM/yyy")</font></b></div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    }
+
+
+                                </div>
+                            </div>
+                            <!-- Blog Pagination -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

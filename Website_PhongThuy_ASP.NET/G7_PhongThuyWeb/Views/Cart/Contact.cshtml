@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form action='@Url.Action("Contact","Cart")' method='post'>
+    <!-- Define a field for the user to enter in their name -->
+    <label for='name'>Your Name</label>
+    <input name='name' />
+    <br />
+    <!-- Define a text area for the user to type in their contact message -->
+    <label for='message'>
+        <textarea name='message'></textarea>
+        <br />
+        <!-- Define a button to actually submit the form -->
+        <input type='submit' value='Send Message' />
+</form>

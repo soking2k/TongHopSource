@@ -1,0 +1,62 @@
+﻿@model G7_PhongThuyWeb.Models.user
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <section id="aa-myaccount">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-myaccount-area">
+                        <div class="row">
+
+                            <div class="col-md-8 col-md-push-2">
+                                <div class="aa-myaccount-register">
+                                    <h4>Quên Mật Khẩu</h4>
+                                    @if (TempData["check"] != null)
+                                    {
+                                        <p class="alert alert-success" id="successMessage">@TempData["check"]</p>
+                                    }
+                                    <form name="formRegister" class="aa-login-form" method="post">
+                                        <label for="">Username<span>*</span></label>
+                                        <input type="text" placeholder="Username" name="username" required>
+                                        <label for="">Email <span>*</span></label>
+                                        <input type="text" placeholder="useremail@gmail.com" name="email" required>
+                                        <label for="">Số điện thoại<span>*</span></label>
+                                        <input type="text" placeholder="Số điện thoại" name="phone" required>                                
+                                        <label for="">Mật khẩu Mới<span>*</span></label>
+                                        <input type="password" placeholder="Password" name="password" required>
+                                        <input type="date" style="display: none" placeholder="Password" name="created" id="the-date">
+
+                                        <p style="color:red; display: block;"></p>
+                                        <p style="color:red; display: block;"></p>
+                                        <button type="reset" class="aa-browse-btn" value="Reset">Đặt lại</button>
+                                        <button type="submit" value="Login" class="aa-browse-btn">Quên Mật Khẩu</button>
+
+                                    </form>
+
+
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+
+
+<!-- jQuery library -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+</html>
+
+<!-- end footer-->

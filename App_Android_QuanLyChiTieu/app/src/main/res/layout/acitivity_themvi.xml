@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:hint="Tên Ví"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+
+    <EditText
+        android:id="@+id/edt_money"
+        android:layout_width="200sp"
+        android:layout_height="55dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/background_edittext"
+        android:hint="Số tiền"
+        android:inputType="number"
+        android:maxLength="14"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:layout_below="@id/edt_name"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textColorHint="#A60000"
+        android:textSize="25sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="30sp"
+        android:textColor="#C32F00"
+        android:text="VND"
+        android:layout_below="@id/edt_name"
+        android:layout_toRightOf="@+id/edt_money"/>
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:layout_marginTop="14dp"
+        android:textSize="16sp"
+        android:hint="Address"
+        android:layout_below="@id/edt_money"
+        android:text="Thêm Ví" />
+
+
+
+</RelativeLayout>
